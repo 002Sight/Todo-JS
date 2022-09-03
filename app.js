@@ -5,8 +5,9 @@ const todoList = document.getElementById('todo-list');
 
 //Event Listeners
 todoButton.addEventListener("click", addTodo);
+todoList.addEventListener("click", deleteCheck);
 
-//Functions
+//Create New Elements
 function addTodo(event) {
     //Prevent form from submitting
     event.preventDefault();
@@ -27,15 +28,39 @@ function addTodo(event) {
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
 
-    //Check Trash Button
+    //Trash Button
     const trashButton = document.createElement('button');
     trashButton.innerHTML = '<i class="fas fa-trash"></i>';
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
-    
+
     //Append to list
     todoList.appendChild(todoDiv);
 
     //Clear Todo inputValue
-    todoInput.value= "";
+    todoInput.value = "";
 };
+
+function deleteCheck(e) {
+    const item = e.target;
+    //Delete Todo
+    if (item.classList[0] === "trash-btn") {
+        const todo = item.parentElement;
+        //Animation
+        todo.classList.add("fall")
+
+        todo.addEventListener("transitionend", function () {
+            todo.remove();
+        })
+    }
+
+    //Check Mark
+    if (item.classList[0] === "complete-btn") {
+        const todo = item.parentElement;
+        todo.classList.toggle("completed");
+    }
+}
+
+function filterTodo(){
+    
+}
