@@ -24,15 +24,20 @@
     </header>
     <form>
       <input id="todo-input" type="text" class="todo-input" />
-      <button id="todo-button" type="submit" class="todo-button" >
+      <button id="todo-button" type="submit" class="todo-button">
         <i class="fas fa-plus-square"></i>
       </button>
+      <div class="select">
+        <select name="todos" class="filter-todo">
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="uncompleted">Uncompleted</option>
+        </select>
+      </div>
     </form>
     <div class="todo-container">
       <ul id="todo-list" class="todo-list"></ul>
     </div>
-
-
 
     <script src="./app.js"></script>
   </body>
